@@ -6,6 +6,7 @@ function Tree(x,y,c) {
 	this.display=function() {
 		strokeWeight(3);
 		stroke(this.col);
+		//makes a triangle-shaped tree with lines
 		line(this.xPos-20,this.yPos,this.xPos+20,this.yPos);
 		line(this.xPos-18,this.yPos-5,this.xPos+18,this.yPos-5);
 		line(this.xPos-16,this.yPos-10,this.xPos+16,this.yPos-10);

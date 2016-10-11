@@ -1,8 +1,4 @@
 function Player(x,y,speed,c) {
-	/*this.xPos=windowWidth/2;
-	this.yPos=windowHeight/2;
-	this.maxSpeed=10;
-	this.col=color(255,255,255);*/
 	this.xPos=x;
 	this.yPos=y;
 	this.maxSpeed=speed;
@@ -11,9 +7,12 @@ function Player(x,y,speed,c) {
 	this.glowing=false;
 
 	this.update=function() {
+		//the main object can move around randomly
+		//(player don't need to control it)
 		this.xPos+=int(random(this.maxSpeed*-1,this.maxSpeed)); 
 		this.yPos+=int(random(this.maxSpeed*-1,this.maxSpeed));
 
+		//doesn't let the object travel off the screen
 		if (this.xPos<0) {
 				this.xPos=0;
 		} else if (this.xPos>windowWidth) {
@@ -26,38 +25,41 @@ function Player(x,y,speed,c) {
 		}
 	}
 
+	//changes object's color
 	this.changeColor=function(c) {
 		this.col=c
 	}
 
+	//turn on smile
 	this.smile=function() {
 		this.face=true;
 	}
 
-	/*this.glow=function() {
+	//turn on glow
+	this.glow=function() {
 		this.glowing=true;
-	}*/
+	}
 
+	//turns all effects off
 	this.reset=function() {
-		this.xPos=x;
-		this.yPos=y;
-		this.maxSpeed=speed;
-		this.col=c
 		this.face=false;
 		this.glowing=false;
 	}
 
+
 	this.display=function() {
-		/*if (this.glowing==true) {
+		//pink glow
+		if (this.glowing==true) {
 			noStroke();
-			for(var i=5;i>=2;i--) {
-				fill(255,255,40*i);
+			for(var i=5;i>=0;i--) {
+				fill(255,100+20*i,170+10*i);
 				ellipse(this.xPos,this.yPos,50+5*i,50+5*i);
 			}
-		}*/
+		}
 		stroke(0);
 		fill(this.col);
-		ellipse(this.xPos, this.yPos, 50,50);
+		ellipse(this.xPos, this.yPos, 50,50);	//player
+		//smiley face
 		if (this.face==true) {
 			noFill();
 			arc(this.xPos,this.yPos,30,30,0,PI,OPEN);
